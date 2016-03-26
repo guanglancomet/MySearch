@@ -28,7 +28,7 @@
 		}
 		
 		.searchType{
-			width: 80px;
+			width: 85px;
 			height: 44px;
 			border: 1px solid blue;
 		}
@@ -42,6 +42,7 @@
 			}
 			return true;
 		}
+		
 	</script>
 </head>
 <body>

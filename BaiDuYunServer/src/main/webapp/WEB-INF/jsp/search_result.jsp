@@ -25,10 +25,10 @@
 		
 		.log{
 			margin-top:10px;
-			margin-left: 130px;		
+			margin-left: 139px;		
 		}
 			.searchType{
-			width: 80px;
+			width: 85px;
 			height: 44px;
 			border: 1px solid blue;
 		}
@@ -41,6 +41,18 @@
 			}
 			return true;
 		}
+		
+		$(function(){
+			if($("#returnSearchType").val() == "1"){
+				$("#searchType").val("1");
+			}else if($("#returnSearchType").val() == "2"){
+				$("#searchType").val("2");
+			}else if($("#returnSearchType").val() == "3"){
+				$("#searchType").val("3");
+			}else{
+				$("#searchType").val("1");
+			}
+		});
 	</script>
 </head>
 <body>
@@ -67,7 +79,7 @@
 	  				<div class="data_list">
 							<div class="data_list_title">
 									<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-									共查询到【${resultCount}】条&nbsp;&nbsp;&nbsp;用时【${searchTime}】&nbsp;&nbsp;&nbsp;温馨提示：【只显示前十页数据】
+									共查询到【${resultCount}】条&nbsp;&nbsp;&nbsp;用时【${searchTime}S】&nbsp;&nbsp;&nbsp;温馨提示：【只显示前十页数据】
 							</div>
 							<div class="datas">
 								<c:forEach items="${searchResultList}" var="s">
@@ -111,21 +123,22 @@
 		<nav>
 		  <ul class="pagination">
 			    <li>
-			      <a href="<%=request.getContextPath()%>/search/search_key?start=0" aria-label="Previous">
+			      <a href="<%=request.getContextPath()%>/search/search_key?page=1" aria-label="Previous">
 			        <span aria-hidden="true">首页</span>
 			      </a>
 			    </li>
-			    <li><a href="<%=request.getContextPath()%>/search/search_key?start=0">1</a></li>
-			    <li><a href="<%=request.getContextPath()%>/search/search_key?start=10">2</a></li>
-			    <li><a href="<%=request.getContextPath()%>/search/search_key?start=20">3</a></li>
-			    <li><a href="<%=request.getContextPath()%>/search/search_key?start=30">4</a></li>
-			    <li><a href="<%=request.getContextPath()%>/search/search_key?start=40">5</a></li>
-			    <li><a href="<%=request.getContextPath()%>/search/search_key?start=50">6</a></li>
-			    <li><a href="<%=request.getContextPath()%>/search/search_key?start=60">7</a></li>
-			    <li><a href="<%=request.getContextPath()%>/search/search_key?start=70">8</a></li>
-			    <li><a href="<%=request.getContextPath()%>/search/search_key?start=80">9</a></li>
+			    <li><a href="<%=request.getContextPath()%>/search/search_key?page=1">1</a></li>
+			    <li><a href="<%=request.getContextPath()%>/search/search_key?page=2">2</a></li>
+			    <li><a href="<%=request.getContextPath()%>/search/search_key?page=3">3</a></li>
+			    <li><a href="<%=request.getContextPath()%>/search/search_key?page=4">4</a></li>
+			    <li><a href="<%=request.getContextPath()%>/search/search_key?page=5">5</a></li>
+			    <li><a href="<%=request.getContextPath()%>/search/search_key?page=6">6</a></li>
+			    <li><a href="<%=request.getContextPath()%>/search/search_key?page=7">7</a></li>
+			    <li><a href="<%=request.getContextPath()%>/search/search_key?page=8">8</a></li>
+			    <li><a href="<%=request.getContextPath()%>/search/search_key?page=9">9</a></li>
+			    <li><a href="<%=request.getContextPath()%>/search/search_key?page=10">10</a></li>
 			    <li>
-			      <a href="<%=request.getContextPath()%>/search/search_key?start=80"" aria-label="Next">
+			      <a href="<%=request.getContextPath()%>/search/search_key?page=10" aria-label="Next">
 			        <span aria-hidden="true">末页</span>
 			      </a>
 			    </li>
@@ -133,5 +146,6 @@
 		</nav>
 	</div>
 </c:if>
+<input value="${searchType}" type="hidden" id="returnSearchType" />
 </body>
 </html>

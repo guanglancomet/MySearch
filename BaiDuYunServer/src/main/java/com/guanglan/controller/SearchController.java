@@ -33,13 +33,14 @@ public class SearchController {
 	
 	@RequestMapping("/search_index")
 	public String searchIndex(){
+		
 		return "search_index";
 	}
 	
 	@RequestMapping(value="/search_key")//,method=RequestMethod.POST
-	public ModelAndView searchKey(HttpServletRequest request,@RequestParam(value="start",defaultValue="0") int start) throws IOException{
+	public ModelAndView searchKey(HttpServletRequest request,@RequestParam(value="page",defaultValue="1") int page) throws IOException{
 		//String key = request.getParameter("key");
-		
+		int start = (page-1)*10;
 		if(request.getParameter("key") != null){
 			String key=URLEncoder.encode(request.getParameter("key"), "utf-8");
 			chineseKey = request.getParameter("key");
@@ -52,6 +53,7 @@ public class SearchController {
 		mv.addObject("searchResultList", map.get("searchResultList"));
 		mv.addObject("searchTime", map.get("searchTime"));
 		mv.addObject("resultCount", map.get("resultCount"));
+		mv.addObject("searchType", searchType);
 		return mv;
 	}
 	
